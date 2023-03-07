@@ -1,8 +1,16 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      wordSearched: "",
+    };
   },
+  props: {
+    name: String,
+    placeholder: String,
+    search: String,
+  },
+  emits: ["newSearch"],
 };
 </script>
 
@@ -11,22 +19,24 @@ export default {
     <div class="container">
       <nav class="navbar w-100">
         <div class="container-fluid">
-          <a class="navbar-brand fs-1 text-light">BOOLFLIX</a>
+          <a class="navbar-brand fs-1 text-danger">{{ name }}</a>
           <form
             class="d-flex"
             role="search"
+            @submit.prevent="$emit('newSearch', wordSearched)"
           >
             <input
               class="form-control me-2"
               type="search"
-              placeholder="Search"
+              :placeholder="placeholder"
               aria-label="Search"
+              v-model="wordSearched"
             />
             <button
               class="btn btn-outline-danger"
               type="submit"
             >
-              Search
+              {{ search }}
             </button>
           </form>
         </div>

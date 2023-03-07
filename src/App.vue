@@ -9,12 +9,21 @@ export default {
   data() {
     return {
       store,
+      appName: "BOOLFLIX",
+      searchPlaceholder: "Cerca film o serie TV ",
+      searchButton: "search",
     };
   },
 
   components: {
     AppHeader,
     AppMain,
+  },
+
+  methods: {
+    do_something(param) {
+      console.log(param);
+    },
   },
 
   created() {
@@ -25,7 +34,12 @@ export default {
 </script>
 
 <template>
-  <AppHeader />
+  <AppHeader
+    :name="appName"
+    :placeholder="searchPlaceholder"
+    :search="searchButton"
+    @newSearch="do_something"
+  />
   <AppMain />
 </template>
 
