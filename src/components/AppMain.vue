@@ -17,13 +17,16 @@ export default {
 <template>
   <main class="bg-dark">
     <div class="container">
+      <h2>Film</h2>
       <AppCardMovie />
+      <h2>Serie TV</h2>
       <AppCardTv />
     </div>
   </main>
 </template>
 
 <style lang="scss" scoped>
-.row {
+main {
+  color: white;
 }
 </style>

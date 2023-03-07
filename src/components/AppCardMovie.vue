@@ -1,14 +1,17 @@
 <script>
+import { store } from "../data/store";
 export default {
   data() {
-    return {};
+    return {
+      store,
+    };
   },
 };
 </script>
 
 <template>
   <div class="row row-cols-4 g-4">
-    <div class="col">
+    <!--  <div class="col">
       <div class="img bg-danger">
         <img
           src="https://picsum.photos/id/58/306/480"
@@ -39,73 +42,22 @@ export default {
           alt=""
         />
       </div>
-    </div>
+    </div> -->
 
-    <div class="col">
+    <div
+      class="col"
+      v-for="movie in store.movieList"
+    >
       <div class="info bg-success text-center">
+        <h2>{{ movie.title }}</h2>
+        <h3>{{ movie.original_title }}</h3>
+        <div>{{ movie.original_language }}</div>
+        <div>{{ movie.vote_average }}</div>
         <div>
-          <h2>titolo</h2>
-          <h3>titolo originale</h3>
-          <div>lingua</div>
-          <div>voto</div>
-          <div>
-            <span>Trama</span>
-            <p>
-              testo trama Lorem ipsum dolor sit amet consectetur adipisicing
-              elit. Tempora, libero.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="info bg-success text-center">
-        <div>
-          <h2>titolo</h2>
-          <h3>titolo originale</h3>
-          <div>lingua</div>
-          <div>voto</div>
-          <div>
-            <span>Trama</span>
-            <p>
-              testo trama Lorem ipsum dolor sit amet consectetur adipisicing
-              elit. Tempora, libero.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="info bg-success text-center">
-        <div>
-          <h2>titolo</h2>
-          <h3>titolo originale</h3>
-          <div>lingua</div>
-          <div>voto</div>
-          <div>
-            <span>Trama</span>
-            <p>
-              testo trama Lorem ipsum dolor sit amet consectetur adipisicing
-              elit. Tempora, libero.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="info bg-success text-center">
-        <div>
-          <h2>titolo</h2>
-          <h3>titolo originale</h3>
-          <div>lingua</div>
-          <div>voto</div>
-          <div>
-            <span>Trama</span>
-            <p>
-              testo trama Lorem ipsum dolor sit amet consectetur adipisicing
-              elit. Tempora, libero.
-            </p>
-          </div>
+          <span>Trama</span>
+          <p class="plot text-start">
+            {{ movie.overview }}
+          </p>
         </div>
       </div>
     </div>
@@ -119,10 +71,14 @@ export default {
   .img,
   .info {
     height: 100%;
-    div {
-      display: flex;
-      flex-direction: column;
-      padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+
+    .plot {
+      min-height: 100%;
+      overflow: auto;
     }
   }
 }
