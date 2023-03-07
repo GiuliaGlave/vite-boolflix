@@ -6,6 +6,21 @@ export default {
       store,
     };
   },
+  methods: {
+    getFlag(country) {
+      country = country.toUpperCase();
+      //ci molte bandiere non corrispondono alla lingua perchè il codice del paese è diverso dal codice ISO
+      if (country == "EN") return "https://flagsapi.com/GB/flat/64.png";
+      if (country == "EL") return "https://flagsapi.com/GR/flat/64.png";
+      if (country == "DA") return "https://flagsapi.com/DK/flat/64.png";
+      if (country == "KO") return "https://flagsapi.com/KR/flat/64.png";
+      if (country == "FA") return "https://flagsapi.com/IR/flat/64.png";
+      if (country == "JA") return "https://flagsapi.com/JP/flat/64.png";
+      if (country == "ZH") return "https://flagsapi.com/CN/flat/64.png";
+      if (country == "AR") return "https://flagsapi.com/EG/flat/64.png";
+      return "https://flagsapi.com/" + country + "/flat/64.png";
+    },
+  },
 };
 </script>
 
@@ -51,7 +66,15 @@ export default {
       <div class="info bg-success text-center">
         <h2>{{ movie.title }}</h2>
         <h3>{{ movie.original_title }}</h3>
+        <!-- bandiera -->
         <div>{{ movie.original_language }}</div>
+        <div>
+          <img
+            :src="getFlag(movie.original_language)"
+            alt=""
+          />
+        </div>
+        <!-- voto -->
         <div>{{ movie.vote_average }}</div>
         <div>
           <span>Trama</span>
