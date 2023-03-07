@@ -15,8 +15,15 @@ export default {
 </script>
 
 <template>
-  <AppCardMovie />
-  <AppCardTv />
+  <main class="bg-dark">
+    <div class="container">
+      <AppCardMovie />
+      <AppCardTv />
+    </div>
+  </main>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.row {
+}
+</style>
