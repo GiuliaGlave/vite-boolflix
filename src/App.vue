@@ -26,6 +26,10 @@ export default {
   },
 
   methods: {
+    fetchResults(query) {
+      this.fetchMovie(query);
+      this.fetchTVSeries(query);
+    },
     fetchMovie(query) {
       axios
         .get(
@@ -33,14 +37,18 @@ export default {
         )
         .then((response) => {
           store.movieList = response.data.results;
-          console.log(this.movieList);
         });
     },
-  },
-
-  created() {
-    /* axios.get("movie-list").then((response) => {});
-    axios.get("tv-list").then((response) => {}); */
+    fetchTVSeries(query) {
+      axios
+        .get(
+          `${this.base_url}/search/tv?api_key=${this.api_key}&query=${query}`
+        )
+        .then((response) => {
+          store.tvShowList = response.data.results;
+          console.log(this.tvShowList);
+        });
+    },
   },
 };
 </script>
@@ -50,9 +58,13 @@ export default {
     :name="appName"
     :placeholder="searchPlaceholder"
     :search="searchButton"
-    @newSearch="fetchMovie"
+    @newSearch="fetchResults"
   />
   <AppMain />
 </template>
 
-<style lang="scss"></style>
+<style lang="scss">
+body {
+  background-color: #222;
+}
+</style>

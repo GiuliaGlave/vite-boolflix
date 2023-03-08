@@ -19,7 +19,8 @@ export default {
     <div class="container">
       <h2>Film</h2>
       <AppCardMovie />
-      <h2>Serie TV</h2>
+
+      <h2 class="my-5">Serie TV</h2>
       <AppCardTv />
     </div>
   </main>
